@@ -11,14 +11,15 @@ using namespace std;
 
 void Introduction();
 string GetGuessAndPrintBack();
+void LoopTurns();
 
 
 int main()
 {
 	Introduction();
-
-	GetGuessAndPrintBack();
-	GetGuessAndPrintBack();
+	
+	// loop for the number of turns asking for guesses
+	LoopTurns();
 
 	return 0;
 }
@@ -45,4 +46,14 @@ string GetGuessAndPrintBack()
 	cout << "Your guess was: " << Guess << endl;
 
 	return Guess;
+}
+
+void LoopTurns()
+{
+	constexpr int MAX_TRIES = 5;
+	for (int i = 0; i < MAX_TRIES; i++)
+	{
+		GetGuessAndPrintBack();
+		cout << endl;
+	}
 }
