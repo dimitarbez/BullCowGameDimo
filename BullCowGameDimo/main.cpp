@@ -10,8 +10,8 @@ using namespace std;
 
 
 void Introduction();
-string GetGuessAndPrintBack();
-void LoopTurns();
+string GetGuess();
+void PlayGame();
 
 
 int main()
@@ -19,7 +19,7 @@ int main()
 	Introduction();
 	
 	// loop for the number of turns asking for guesses
-	LoopTurns();
+	PlayGame();
 
 	return 0;
 }
@@ -35,25 +35,30 @@ void Introduction()
 	return;
 }
 
-string GetGuessAndPrintBack()
+string GetGuess()
 {	
 	// asks for a guess
 	cout << "Enter a word: ";
 	string Guess = "";
 	getline(cin, Guess);
 
-	// print the guess back
-	cout << "Your guess was: " << Guess << endl;
 
 	return Guess;
 }
 
-void LoopTurns()
+
+
+void PlayGame()
 {
 	constexpr int MAX_TRIES = 5;
 	for (int i = 0; i < MAX_TRIES; i++)
 	{
-		GetGuessAndPrintBack();
+		string Guess = GetGuess();
+
+		// print the guess back
+		cout << "Your guess was: " << Guess << endl;
+
+
 		cout << endl;
 	}
 }
