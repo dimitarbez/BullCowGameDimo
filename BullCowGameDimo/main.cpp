@@ -14,9 +14,15 @@ bool AskToPlayAgain();
 
 int main()
 {
-	Introduction();
-	PlayGame();
-	AskToPlayAgain();
+	bool bPlayAgain = false;
+	do
+	{
+		Introduction();
+		PlayGame();
+		bPlayAgain = AskToPlayAgain();
+	} 
+	while (bPlayAgain);
+	
 	return 0;
 }
 
@@ -62,7 +68,7 @@ void PlayGame()
 
 bool AskToPlayAgain()
 {
-	cout << "Do you want to play again? ";
+	cout << "Do you want to play again? (y/n) ";
 	string response = "";
 	getline(cin, response);
 	cout << "Is it y?" ;
