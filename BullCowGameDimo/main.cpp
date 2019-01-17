@@ -5,22 +5,18 @@
 #include <iostream>
 #include <string>
 
-
 using namespace std;
-
 
 void Introduction();
 string GetGuess();
 void PlayGame();
-
+bool AskToPlayAgain();
 
 int main()
 {
 	Introduction();
-	
-	// loop for the number of turns asking for guesses
 	PlayGame();
-
+	AskToPlayAgain();
 	return 0;
 }
 
@@ -61,4 +57,22 @@ void PlayGame()
 
 		cout << endl;
 	}
+
+}
+
+bool AskToPlayAgain()
+{
+	cout << "Do you want to play again? ";
+	string response = "";
+	getline(cin, response);
+	cout << "Is it y?" ;
+	if ((response[0] == 'y') || (response[0] == 'Y'))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
 }
