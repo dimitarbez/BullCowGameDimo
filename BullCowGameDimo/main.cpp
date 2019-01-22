@@ -4,6 +4,7 @@
 #include "pch.h"
 #include <iostream>
 #include <string>
+#include "FBullCowGame.h"
 
 void Introduction();
 std::string GetGuess();
@@ -50,6 +51,8 @@ std::string GetGuess()
 
 void PlayGame()
 {
+	FBullCowGame BCGame; // instantiate a new game
+
 	constexpr int MAX_TRIES = 5;
 	for (int i = 0; i < MAX_TRIES; i++)
 	{
