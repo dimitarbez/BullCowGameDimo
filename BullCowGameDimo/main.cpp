@@ -1,13 +1,17 @@
-// BullCowGameDimo.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+/*
+	This is the console excecutable that makes use of the BullCow class
+	This acts as the view in an MVC pattern, and is reponsible for all user interaction.
+	For game logic and the FBullCowGame class.
+*/
 #include "pch.h"
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
 
+using FText = std::string;
+
 void Introduction();
-std::string GetGuess();
+FText GetGuess();
 void PlayGame();
 bool AskToPlayAgain();
 
@@ -31,20 +35,20 @@ int main()
 void Introduction()
 {
 	// introduce the game
-	constexpr int WORD_LENGTH = 5;
+	constexpr int WORD_LENGTH = 9;
 	std::cout << "Welcome to yeet and skeet, a juicy meme game!\n";
 	std::cout << "Can you guess of the " << WORD_LENGTH << " letter isogram ya boi is thinking of?";
 	std::cout << std::endl;
 	return;
 }
 
-std::string GetGuess()
+FText GetGuess()
 {	
 	int CurrentTry = BCGame.GetCurrentTry();
 	std::cout << "Try " << CurrentTry << ". ";
 	// asks for a guess
 	std::cout << "Enter a word: ";
-	std::string Guess = "";
+	FText Guess = "";
 	std::getline(std::cin, Guess);
 
 
@@ -61,7 +65,7 @@ void PlayGame()
 
 	for (int i = 0; i < MaxTries; i++)
 	{
-		std::string Guess = GetGuess(); // TODO make loop checking valid guesses
+		FText Guess = GetGuess(); // TODO make loop checking valid guesses
 
 		// submit valid guess to the game
 		// print the number of bulls and cows
@@ -75,7 +79,7 @@ void PlayGame()
 bool AskToPlayAgain()
 {
 	std::cout << "Do you want to play again? (y/n) ";
-	std::string response = "";
+	FText response = "";
 	std::getline(std::cin, response);
 	std::cout << "Is it y?\n" ;
 	if ((response[0] == 'y') || (response[0] == 'Y'))
