@@ -55,7 +55,7 @@ std::string GetGuess()
 
 void PlayGame()
 {
-
+	BCGame.Reset();
 
 	int MaxTries = BCGame.GetMaxTries();
 
