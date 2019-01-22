@@ -35,7 +35,7 @@ int main()
 void Introduction()
 {
 	// introduce the game
-	constexpr int WORD_LENGTH = 9;
+	constexpr int32 WORD_LENGTH = 9;
 	std::cout << "Welcome to yeet and skeet, a juicy meme game!\n";
 	std::cout << "Can you guess of the " << WORD_LENGTH << " letter isogram ya boi is thinking of?";
 	std::cout << std::endl;
@@ -44,7 +44,7 @@ void Introduction()
 
 FText GetGuess()
 {	
-	int CurrentTry = BCGame.GetCurrentTry();
+	int32 CurrentTry = BCGame.GetCurrentTry();
 	std::cout << "Try " << CurrentTry << ". ";
 	// asks for a guess
 	std::cout << "Enter a word: ";
@@ -61,9 +61,9 @@ void PlayGame()
 {
 	BCGame.Reset();
 
-	int MaxTries = BCGame.GetMaxTries();
+	int32 MaxTries = BCGame.GetMaxTries();
 
-	for (int i = 0; i < MaxTries; i++)
+	for (int32 i = 0; i < MaxTries; i++)
 	{
 		FText Guess = GetGuess(); // TODO make loop checking valid guesses
 
