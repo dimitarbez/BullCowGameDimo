@@ -31,13 +31,11 @@ int main()
 	return 0;
 }
 
-
 void Introduction()
 {
 	// introduce the game
-	constexpr int32 WORD_LENGTH = 9;
 	std::cout << "Welcome to yeet and skeet, a juicy meme game!\n";
-	std::cout << "Can you guess of the " << WORD_LENGTH << " letter isogram ya boi is thinking of?";
+	std::cout << "Can you guess of the " << BCGame.GetHiddenWordLength() << " letter isogram ya boi is thinking of?";
 	std::cout << std::endl;
 	return;
 }
@@ -54,8 +52,6 @@ FText GetGuess()
 
 	return Guess;
 }
-
-
 
 void PlayGame()
 {

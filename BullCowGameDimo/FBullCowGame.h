@@ -17,8 +17,10 @@ public:
 	FBullCowGame(); // CONSTRUCTOR
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
+	int32 GetHiddenWordLength() const;
+	bool CheckGuessValidity(FString) const; // TODO make a more rich return value
 	bool IsGameWon() const;
-	bool CheckGuessValidity(FString); // TODO make a more rich return value
+	
 	void Reset(); // TODO make a more rich return value
 	// provide a method for counting bulls and cows and increasing turn number, assuming valid guess
 	FBullCowCount SubmitGuess(FString);
