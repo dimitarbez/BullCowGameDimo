@@ -30,6 +30,7 @@ public:
 	EGuessStatus CheckGuessValidity(FString) const;
 	bool IsGameWon() const;
 	
+
 	void Reset(); // TODO make a more rich return value
 	// provide a method for counting bulls and cows and increasing turn number, assuming valid guess
 	FBullCowCount SubmitValidGuess(FString);
