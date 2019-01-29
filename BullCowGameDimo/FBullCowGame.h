@@ -32,7 +32,7 @@ public:
 	
 	void Reset(); // TODO make a more rich return value
 	// provide a method for counting bulls and cows and increasing turn number, assuming valid guess
-	FBullCowCount SubmitGuess(FString);
+	FBullCowCount SubmitValidGuess(FString);
 
 private:
 	// see constructor for initialization
