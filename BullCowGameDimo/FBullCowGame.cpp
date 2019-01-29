@@ -4,7 +4,7 @@
 int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
-bool FBullCowGame::IsGameWon() const { return false; }
+bool FBullCowGame::IsGameWon() const { return bIsWon; }
 
 FBullCowGame::FBullCowGame(){ Reset(); }
 
@@ -16,6 +16,7 @@ void FBullCowGame::Reset()
 	MyMaxTries = MAX_TRIES;
 	MyHiddenWord = HIDDEN_WORD;
 	MyCurrentTry = 1;
+	bIsWon = false;
 
 	return;
 }
@@ -54,6 +55,14 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 				}					
 			}
 		}
+	}
+	if (BullCowCount.Bulls == GuessWordLength)
+	{
+		bIsWon = true;
+	}
+	else
+	{
+		bIsWon = false;
 	}
 	return BullCowCount;
 }
