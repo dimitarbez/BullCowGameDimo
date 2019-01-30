@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "FBullCowGame.h"
 #include <map>
-#define TMap std::map;
+#define TMap std::map
 
 int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
@@ -72,12 +72,28 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 bool FBullCowGame::IsIsogram(FString Word) const
 {	
 	// treat 0 and 1 letter words as isograms
+	if (Word.length() <= 1) { return true; }
 
-	// loop through all the letters
-		// if the letter is in the map
-			// we do not have an isogram
-		// otherwise
-			// add the letter to the map as seen
+	// setup our map
+	TMap<char, bool> LetterSeen;
+
+	for (auto Letter : Word)	// for all letters of the word
+	{
+		Letter = tolower(Letter); // handle mixed case letters
+
+		if (LetterSeen[Letter] == true) // if the letter is in the map
+		{
+			return false; // we do not have an isogram
+		}
+		else // otherwise
+		{
+			LetterSeen[Letter] = true; // add it to the map
+		}
+			
+				
+			
+				
+	}
 	return true; // for example in cases where /0 is entered
 }
 
