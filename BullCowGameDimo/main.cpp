@@ -3,13 +3,17 @@
 	This acts as the view in an MVC pattern, and is reponsible for all user interaction.
 	For game logic and the FBullCowGame class.
 */
+#pragma once
+
 #include "pch.h"
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
 
+// make syntax UE4 friendly
 using FText = std::string;
 
+// functions prototypes as outside a class
 void Introduction();
 FText GetValidGuess();
 void PlayGame();

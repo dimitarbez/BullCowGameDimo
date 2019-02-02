@@ -1,7 +1,13 @@
+/*
+The game logic (no view code or direct user interaction)
+The game is the simple guess the word based on Mastermind
+*/
+
 #pragma once
 
 #include <string>
 
+// make syntax UE4 friendly
 using FString = std::string;
 using int32 = int;
 
@@ -31,14 +37,13 @@ public:
 	bool IsGameWon() const;
 	
 
-	void Reset(); // TODO make a more rich return value
+	void Reset();
 	// provide a method for counting bulls and cows and increasing turn number, assuming valid guess
 	FBullCowCount SubmitValidGuess(FString);
 
 private:
 	// see constructor for initialization
 	int32 MyCurrentTry;
-	int32 MyMaxTries;
 	FString MyHiddenWord;
 	bool bIsWon;
 

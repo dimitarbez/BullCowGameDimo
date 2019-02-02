@@ -1,12 +1,16 @@
+#pragma once
+
 #include "pch.h"
 #include "FBullCowGame.h"
 #include <map>
+// make syntax UE4 friendly
 #define TMap std::map
 
-int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
+
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const { return bIsWon; }
+
 
 bool FBullCowGame::IsLowerCase(FString Word) const
 {
@@ -23,14 +27,17 @@ bool FBullCowGame::IsLowerCase(FString Word) const
 	return true;
 }
 
-FBullCowGame::FBullCowGame(){ Reset(); }
+FBullCowGame::FBullCowGame(){ Reset(); } // default constructor
+
+int32 FBullCowGame::GetMaxTries() const {
+	TMap<int32, int32> WordLengthToMaxTries{ {3,4},{4,6},{5,10},{6,15},{7,20}};
+	return WordLengthToMaxTries[GetHiddenWordLength()];
+}
 
 void FBullCowGame::Reset()
 {
-	constexpr int32 MAX_TRIES = 8;
-	const FString HIDDEN_WORD = "planet";
+	const FString HIDDEN_WORD = "planet"; // this MUST be an isogram
 
-	MyMaxTries = MAX_TRIES;
 	MyHiddenWord = HIDDEN_WORD;
 	MyCurrentTry = 1;
 	bIsWon = false;
@@ -73,6 +80,7 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
 			}
 		}
 	}
+	// num of bulls fills the word
 	if (BullCowCount.Bulls == GuessWordLength)
 	{
 		bIsWon = true;
