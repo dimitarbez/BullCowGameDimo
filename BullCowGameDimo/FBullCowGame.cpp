@@ -8,6 +8,21 @@ int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const { return bIsWon; }
 
+bool FBullCowGame::IsLowerCase(FString Word) const
+{
+	for (auto Letter : Word)
+	{	
+		// if the letter is not lower case
+		if (!islower(Letter))
+		{
+			// false it
+			return false;
+		}
+	}
+	// otherwise
+	return true;
+}
+
 FBullCowGame::FBullCowGame(){ Reset(); }
 
 void FBullCowGame::Reset()
@@ -105,7 +120,7 @@ EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess) const
 		return EGuessStatus::Not_Isogram;
 	}
 	// if the guess isn't all lower case 
-	else if (false)	
+	else if (!IsLowerCase(Guess))	
 	{
 		return EGuessStatus::Not_Lowercase;	// TODO write function 
 	}
